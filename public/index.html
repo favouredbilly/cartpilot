@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CartPilot · AI shopping agent with PayPal checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">✈︎</span>
+      <div>
+        <h1>CartPilot</h1>
+        <p>Tell it what you need. It finds, compares, builds the cart. You approve with PayPal.</p>
+      </div>
+    </div>
+    <div class="status" id="status"></div>
+  </header>
+
+  <main class="layout">
+    <section class="chat" aria-label="Chat with CartPilot">
+      <div class="messages" id="messages">
+        <div class="msg bot">
+          <div class="bubble">
+            Hi! I'm <strong>CartPilot</strong>. Tell me what you're shopping for, plus a budget if you have one, and I'll find options, fill your cart and set up a PayPal checkout for you to approve.
+          </div>
+        </div>
+      </div>
+      <div class="chips" id="chips">
+        <button>Find me a mechanical keyboard under $80</button>
+        <button>Home office setup: desk, chair and a lamp. Budget $450</button>
+        <button>Gift for a coffee lover under $50</button>
+      </div>
+      <form class="composer" id="composer">
+        <input id="input" autocomplete="off" placeholder="e.g. I need running shoes and a water bottle, max $130" />
+        <button type="submit" id="send">Send</button>
+      </form>
+    </section>
+
+    <aside class="side">
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Results</h2>
+          <span class="muted" id="source"></span>
+        </div>
+        <div class="products" id="products">
+          <p class="empty">Products CartPilot finds will appear here.</p>
+        </div>
+      </section>
+
+      <section class="panel cart-panel">
+        <div class="panel-head">
+          <h2>Cart</h2>
+          <span class="budget" id="budget"></span>
+        </div>
+        <ul class="cart" id="cart"><li class="empty">Your cart is empty.</li></ul>
+        <div class="cart-total"><span>Total</span><strong id="total">$0.00</strong></div>
+        <button class="checkout-btn" id="checkoutBtn" disabled>Ask CartPilot to check out</button>
+        <div id="paypal-area" class="paypal-area" hidden>
+          <p class="muted">CartPilot created PayPal order <code id="orderId"></code>. Approve it below (sandbox):</p>
+          <div id="paypal-buttons"></div>
+        </div>
+        <div id="receipt" class="receipt" hidden></div>
+      </section>
+    </aside>
+  </main>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
